@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wiki de Personajes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Secciones</h2>
+
+            <ul id="sectionsList"></ul>
+
+            <button onclick="crearSeccion()">+ Nueva sección</button>
+        </aside>
+
+
+        <!-- Main -->
+        <main class="main">
+
+            <div class="topbar">
+
+                <h1 id="sectionTitle">Todos los personajes</h1>
+
+                <input type="text" id="searchBar" placeholder="Buscar personaje..." oninput="buscarPersonajes()">
+
+                <button onclick="abrirModal()">+ Crear personaje</button>
+
+            </div>
+
+            <div id="charactersContainer" class="characters"></div>
+
+        </main>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+
+        <div class="modal-content">
+
+            <h2 id="modalTitle">Nuevo personaje</h2>
+
+            <label>Nombre</label>
+            <input type="text" id="charName">
+
+            <label>Nombre completo</label>
+            <input type="text" id="charFullName">
+
+
+            <label>Genero</label>
+            <input type="text" id="charGender">
+
+            <label>Edad</label>
+            <input type="number" id="charAge">
+
+            <label>Raza</label>
+            <input type="text" id="charRace">
+
+            <label>Altura</label>
+            <input type="text" id="charSize">
+
+            <label>Peso</label>
+            <input type="text" id="charWeight">
+
+            <label>Color de ojos</label>
+            <input type="text" id="charEyes">
+
+            <label>Color de piel</label>
+            <input type="text" id="charSkin">
+
+            <label>Color de cabello</label>
+            <input type="text" id="charHair">
+
+            <label>Característica especial</label>
+            <textarea id="charSpecial"></textarea>
+
+            <label>Lugar de origen</label>
+            <textarea id="charOrigin"></textarea>
+
+            <label>Poder</label>
+            <textarea id="charPower"></textarea>
+
+            <!-- <label>Descripción</label> -->
+            <!-- <textarea id="charDesc"></textarea> -->
+
+            <label>Imagen</label>
+            <input type="file" id="charImage">
+
+            <button onclick="guardarPersonaje()">Guardar</button>
+            <button onclick="cerrarModal()">Cancelar</button>
+
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

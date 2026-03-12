@@ -1,0 +1,266 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0d0d0d;
+    color: white;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea,
+input {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* sidebar */
+
+.sidebar {
+    width: 220px;
+    background: linear-gradient(180deg, #1a0000, #000000);
+    padding: 15px;
+    border-right: 1px solid #330000;
+}
+
+.sidebar h2 {
+    color: #ff3b3b;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    background: #330000;
+}
+
+
+/* main */
+
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* tarjetas */
+
+.characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 420px);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.card {
+    position: relative;
+    background: #111;
+    border: 1px solid #550000;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* cabecera */
+
+.card-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.card-header img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card-title h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.fullname {
+    margin: 2px 0 0 0;
+    font-size: 13px;
+    color: #bbb;
+}
+
+/* info */
+
+.card-info {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.card-info p {
+    margin: 3px 0;
+}
+
+
+/* modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background: #111;
+    padding: 25px;
+    width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 60px auto;
+    border: 1px solid #660000;
+    border-radius: 10px;
+}
+
+.modal-content input,
+.modal-content textarea {
+
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+
+    background: #0a0a0a;
+    border: 1px solid #550000;
+    color: white;
+
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal-content textarea {
+
+    width: 100%;
+    min-height: 80px;
+
+    resize: none;
+
+    background: #0a0a0a;
+    border: 1px solid #550000;
+    color: white;
+
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+
+    outline: none;
+    border-color: #ff3b3b;
+    box-shadow: 0 0 5px #660000;
+
+}
+
+.modal-content button {
+
+    margin-top: 12px;
+    padding: 8px 12px;
+
+    background: #440000;
+    border: none;
+    color: white;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background: #aa0000;
+}
+
+#charSpecial,
+#charOrigin,
+#charPower {
+    height: 70px;
+}
+
+.card {
+    position: relative;
+    background: #111;
+    border: 1px solid #550000;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.editBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #440000;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.editBtn:hover {
+    background: #aa0000;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #ff4a4a;
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #220000;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.deleteBtn:hover {
+    background: #ff0000;
+}
+
+#searchBar {
+    padding: 6px;
+    width: 220px;
+    background: #111;
+    border: 1px solid #550000;
+    color: white;
+    border-radius: 5px;
+}
