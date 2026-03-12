@@ -20,6 +20,105 @@ input {
     height: 100vh;
 }
 
+#sectionsList li {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 10px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: all 0.15s;
+
+}
+
+#sectionsList li.active {
+
+    background: #660000;
+
+    border-left: 4px solid #ff3b3b;
+
+}
+
+#sectionsList li:hover {
+
+    background: #330000;
+
+}
+
+#sectionsList li.active:hover {
+
+    background: #770000;
+
+}
+
+.section-name {
+
+    flex: 1;
+
+}
+
+.section-actions {
+
+    display: flex;
+    gap: 5px;
+
+}
+
+.section-actions button {
+
+    background: #220000;
+
+    border: none;
+
+    color: white;
+
+    padding: 2px 6px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+}
+
+.section-actions button:hover {
+
+    background: #aa0000;
+
+}
+
+.sidebar button {
+
+    margin-top: 10px;
+
+    width: 100%;
+
+    padding: 8px;
+
+    background: linear-gradient(180deg, #330000, #110000);
+
+    border: 1px solid #660000;
+
+    color: white;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
+
+.sidebar button:hover {
+
+    background: #660000;
+
+}
+
 /* sidebar */
 
 .sidebar {
@@ -62,6 +161,45 @@ input {
     align-items: center;
 }
 
+.topbar button {
+
+    background: linear-gradient(180deg, #330000, #110000);
+    border: 1px solid #660000;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: all 0.15s ease;
+
+}
+
+.topbar button:hover {
+
+    background: #660000;
+    border-color: #ff3b3b;
+
+    transform: translateY(-1px);
+
+}
+
+.topbar button:active {
+
+    transform: translateY(1px);
+
+}
+
+.top-buttons {
+    display: flex;
+    gap: 10px;
+}
+
 
 /* tarjetas */
 
@@ -89,8 +227,8 @@ input {
 }
 
 .card-header img {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -257,10 +395,59 @@ input {
 }
 
 #searchBar {
-    padding: 6px;
+
+    padding: 8px 10px;
+
     width: 220px;
+
     background: #111;
+
     border: 1px solid #550000;
+
     color: white;
-    border-radius: 5px;
+
+    border-radius: 6px;
+
+    transition: all 0.15s;
+
+}
+
+#searchBar:focus {
+
+    outline: none;
+
+    border-color: #ff3b3b;
+
+    box-shadow: 0 0 5px #660000;
+
+}
+
+.sectionBtn {
+
+    position: absolute;
+
+    top: 5px;
+
+    right: 55px;
+
+    background: #002200;
+
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    padding: 3px 6px;
+
+    font-size: 12px;
+
+    border-radius: 4px;
+
+}
+
+.sectionBtn:hover {
+
+    background: #00aa44;
+
 }

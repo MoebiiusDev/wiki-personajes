@@ -50,9 +50,20 @@ function mostrarSecciones() {
     // Sección fija
     let liTodos = document.createElement("li")
 
-    liTodos.innerHTML = `
-<span onclick="abrirSeccion(null)"><b>Todos</b></span>
-`
+    liTodos.innerHTML = `<span class="section-name"><b>Todos</b></span>`
+
+    liTodos.onclick = () => {
+
+        abrirSeccion(null)
+
+        document.querySelectorAll("#sectionsList li")
+            .forEach(el => el.classList.remove("active"))
+
+        liTodos.classList.add("active")
+
+    }
+
+    liTodos.classList.add("active")
 
     lista.appendChild(liTodos)
 
@@ -63,11 +74,26 @@ function mostrarSecciones() {
         let li = document.createElement("li")
 
         li.innerHTML = `
-<span onclick="abrirSeccion('${sec}')">${sec}</span>
 
-<button onclick="editarSeccion(${index})">✎</button>
-<button onclick="eliminarSeccion(${index})">🗑</button>
+<span class="section-name">${sec}</span>
+
+<div class="section-actions">
+<button onclick="event.stopPropagation(); editarSeccion(${index})">✎</button>
+<button onclick="event.stopPropagation(); eliminarSeccion(${index})">🗑</button>
+</div>
+
 `
+
+        li.onclick = () => {
+
+            abrirSeccion(sec)
+
+            document.querySelectorAll("#sectionsList li")
+                .forEach(el => el.classList.remove("active"))
+
+            li.classList.add("active")
+
+        }
 
         lista.appendChild(li)
 
@@ -120,15 +146,72 @@ function eliminarSeccion(index) {
 
 }
 
+function exportarDatos() {
 
-function abrirModal() {
+    let personajes = localStorage.getItem(PREFIX + "characters")
 
-    if (seccionActual === null) {
-
-        alert("Debes entrar a una sección para crear un personaje")
+    if (!personajes) {
+        alert("No hay personajes para exportar")
         return
+    }
+
+    let blob = new Blob([personajes], { type: "application/json" })
+
+    let url = URL.createObjectURL(blob)
+
+    let a = document.createElement("a")
+
+    a.href = url
+    a.download = "personajes_backup.json"
+
+    a.click()
+
+    URL.revokeObjectURL(url)
+
+}
+
+function importarDatos(event) {
+
+    let archivo = event.target.files[0]
+
+    if (!archivo) return
+
+    let reader = new FileReader()
+
+    reader.onload = function (e) {
+
+        try {
+
+            let datos = JSON.parse(e.target.result)
+
+            if (!Array.isArray(datos)) {
+                alert("Archivo inválido")
+                return
+            }
+
+            if (!confirm("Esto reemplazará todos los personajes actuales. ¿Continuar?")) {
+                return
+            }
+
+            localStorage.setItem(PREFIX + "characters", JSON.stringify(datos))
+
+            mostrarPersonajes()
+
+            alert("Personajes importados correctamente")
+
+        } catch (error) {
+
+            alert("Error al leer el archivo")
+
+        }
 
     }
+
+    reader.readAsText(archivo)
+
+}
+
+function abrirModal() {
 
     editandoIndex = null
 
@@ -191,7 +274,7 @@ function guardarPersonaje() {
     let sexo = document.getElementById("charGender").value
     let raza = document.getElementById("charRace").value
     let tamano = document.getElementById("charSize").value
-    
+
     let peso = document.getElementById("charWeight").value
     let ojos = document.getElementById("charEyes").value
     let piel = document.getElementById("charSkin").value
@@ -292,6 +375,7 @@ function mostrarPersonajes() {
 
 <button class="editBtn" onclick="editarPersonaje('${p.id}')">✎</button>
 <button class="deleteBtn" onclick="eliminarPersonaje('${p.id}')">🗑</button>
+<button class="sectionBtn" onclick="anadirASeccion('${p.id}')">📂</button>
 
 <div class="card-header">
 
@@ -332,6 +416,44 @@ function mostrarPersonajes() {
             cont.appendChild(card)
 
         })
+
+}
+
+function anadirASeccion(id) {
+
+    let personajes = obtenerPersonajes()
+
+    let personaje = personajes.find(p => p.id === id)
+
+    if (!personaje) return
+
+    let secciones = obtenerSecciones()
+
+    if (secciones.length === 0) {
+        alert("No existen secciones creadas")
+        return
+    }
+
+    let lista = secciones.join("\n")
+
+    let seleccion = prompt(
+        "Escribe el nombre de la sección donde añadir el personaje:\n\n" + lista
+    )
+
+    if (!seleccion) return
+
+    if (!secciones.includes(seleccion)) {
+        alert("Esa sección no existe")
+        return
+    }
+
+    if (!personaje.secciones.includes(seleccion)) {
+        personaje.secciones.push(seleccion)
+    }
+
+    localStorage.setItem(PREFIX + "characters", JSON.stringify(personajes))
+
+    mostrarPersonajes()
 
 }
 

@@ -30,7 +30,17 @@
 
                 <input type="text" id="searchBar" placeholder="Buscar personaje..." oninput="buscarPersonajes()">
 
-                <button onclick="abrirModal()">+ Crear personaje</button>
+                <div class="top-buttons">
+
+                    <button onclick="abrirModal()">+ Crear personaje</button>
+
+                    <button onclick="exportarDatos()">Exportar</button>
+
+                    <button onclick="document.getElementById('importFile').click()">Importar</button>
+
+                </div>
+
+                <input type="file" id="importFile" accept=".json" onchange="importarDatos(event)" hidden>
 
             </div>
 
